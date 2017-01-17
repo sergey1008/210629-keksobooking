@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Sergey Gornostaev](https://up.htmlacademy.ru/javascript/8/user/210629).
-* Наставник: `Неизвестно`.
+* Наставник: `Владимир Андреев`.
 
 ---
 
