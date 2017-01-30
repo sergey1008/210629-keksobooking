@@ -2,24 +2,33 @@
 
 var pins = document.querySelectorAll('.pin');
 var dialog = document.querySelector('.dialog');
-
 var inputTitle = document.querySelector('#title');
 var inputPrice = document.querySelector('#price');
 var inputAddress = document.querySelector('#address');
 
-var clickPin = function () {
-  pins.addEventListener('click', function () {
-    pins.classList.add('pin--active');
-    for (var j = 0; j < pins.length; j++) {
-      pins[j].classList.remove('pin--active');
+var currentPinActive = null;
+var a = 'pin--active';
+
+for (var i = 0; i < pins.langth; i++) {
+  var pin = pins.item[i];
+  pin.addEventListener('click', function () {
+    if (currentPinActive === pin) {
+      return;
     }
+    if (currentPinActive) {
+      currentPinActive.classList.remove(a);
+    }
+    currentPinActive = pin;
+    currentPinActive.classList.add(a);
     dialog.style.display = 'block';
   });
-};
-
-for (var i = 0; i < pins.length; i++) {
-  clickPin(i);
 }
+
+dialog.addEventListener('click', function () {
+  currentPinActive.classList.remove(a);
+  currentPinActive = null;
+  dialog.style.display = 'none';
+});
 
 inputTitle.required = true;
 inputTitle.minLength = 30;
