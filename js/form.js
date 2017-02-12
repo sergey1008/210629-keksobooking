@@ -2,33 +2,49 @@
 
 var pins = document.querySelectorAll('.pin');
 var dialog = document.querySelector('.dialog');
+var dialogClose = document.querySelector('.dialog__close');
 var inputTitle = document.querySelector('#title');
 var inputPrice = document.querySelector('#price');
 var inputAddress = document.querySelector('#address');
 
+var pinActive = 'pin--active';
 var currentPinActive = null;
-var a = 'pin--active';
+dialog.style.display = 'none';
 
-for (var i = 0; i < pins.langth; i++) {
-  var pin = pins.item[i];
-  pin.addEventListener('click', function () {
-    if (currentPinActive === pin) {
-      return;
-    }
+for (var i = 0; i < pins.length; i++) {
+  var pin = pins.item(i);
+  pin.addEventListener('click', function (evt) {
+    var currentPin = evt.currentTarget;
     if (currentPinActive) {
-      currentPinActive.classList.remove(a);
+      currentPinActive.classList.remove(pinActive);
     }
-    currentPinActive = pin;
-    currentPinActive.classList.add(a);
+    currentPinActive = currentPin;
+    currentPinActive.classList.add(pinActive);
     dialog.style.display = 'block';
   });
 }
 
-dialog.addEventListener('click', function () {
-  currentPinActive.classList.remove(a);
+dialogClose.addEventListener('click', function () {
+  currentPinActive.classList.remove(pinActive);
   currentPinActive = null;
   dialog.style.display = 'none';
 });
+
+var time = document.querySelector('#time');
+var timeOut = document.querySelector('#timeout');
+
+time.addEventListener('change', function () {
+  timeOut.value = time.value;
+  time.value = timeOut.value;
+});
+
+var form = document.forms[0];
+var select = form.elements.housing_type;
+
+
+for (var j = 0; j < select.options.length; j++) {
+  var option = select.options[j];
+}
 
 inputTitle.required = true;
 inputTitle.minLength = 30;
