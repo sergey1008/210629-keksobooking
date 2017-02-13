@@ -38,14 +38,6 @@ time.addEventListener('change', function () {
   time.value = timeOut.value;
 });
 
-var form = document.forms[0];
-var select = form.elements.housing_type;
-
-
-for (var j = 0; j < select.options.length; j++) {
-  var option = select.options[j];
-}
-
 inputTitle.required = true;
 inputTitle.minLength = 30;
 inputTitle.maxLength = 100;
